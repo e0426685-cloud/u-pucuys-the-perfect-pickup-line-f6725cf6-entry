@@ -22,6 +22,13 @@ actually say out loud to a person. Built for [make.fun](https://make.fun) — re
 `/output/entry.txt` with plain `open()` and an explicit `chmod 644`,
 so the grader can read it.
 
+Before writing, `validate_entry()` checks the line against the kit gate
+(UTF-8, 1–200 characters, not only whitespace, a single line) and applies
+stricter hygiene on top: no control characters and no leading or trailing
+whitespace, so exactly the line as written lands on disk. Run
+`python3 main.py --check` (or `--dry-run`) to validate the line without
+writing any file; a bad line exits non-zero with a plain reason.
+
 ## Run
 
 ```sh
